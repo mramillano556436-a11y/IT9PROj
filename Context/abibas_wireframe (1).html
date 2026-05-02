@@ -1,0 +1,1212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ABIBAS — Wireframe</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #F5F4F1;
+    --surface: #FFFFFF;
+    --surface2: #F0EFec;
+    --border: #DEDBD6;
+    --border-strong: #C4C1BB;
+    --text: #1A1917;
+    --text-2: #6B6860;
+    --text-3: #9D9B96;
+    --accent: #1A1917;
+    --green: #E6F4EC;
+    --green-t: #1A6335;
+    --amber: #FDF3E3;
+    --amber-t: #8A5A00;
+    --red: #FDECEA;
+    --red-t: #A12828;
+    --blue: #EBF3FD;
+    --blue-t: #1A4A8A;
+    --font: 'DM Sans', sans-serif;
+    --mono: 'DM Mono', monospace;
+    --r-sm: 6px;
+    --r-md: 10px;
+    --r-lg: 14px;
+  }
+
+  body {
+    font-family: var(--font);
+    background: var(--bg);
+    color: var(--text);
+    padding: 48px 40px;
+  }
+
+  /* ── Page layout ── */
+  .page-title {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: .12em;
+    color: var(--text-3);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .page-subtitle {
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+  .page-desc {
+    font-size: 13px;
+    color: var(--text-2);
+    margin-bottom: 48px;
+  }
+
+  .section-divider {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 52px 0 28px;
+  }
+  .section-divider-line { flex: 1; height: 0.5px; background: var(--border); }
+  .section-divider-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: .1em;
+    color: var(--text-3);
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .screen-wrap { margin-bottom: 40px; }
+  .screen-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: .08em;
+    color: var(--text-3);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  /* ── Frame shell ── */
+  .frame {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r-lg);
+    overflow: hidden;
+  }
+
+  /* ── Common nav ── */
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 24px;
+    border-bottom: 0.5px solid var(--border);
+    background: var(--surface);
+  }
+  .nav-logo {
+    font-family: var(--mono);
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: .06em;
+    color: var(--text);
+  }
+  .nav-links { display: flex; gap: 24px; }
+  .nav-link { font-size: 13px; color: var(--text-2); }
+  .nav-icons { display: flex; gap: 12px; }
+  .nav-icon {
+    width: 20px; height: 20px;
+    border-radius: var(--r-sm);
+    background: var(--surface2);
+    border: 0.5px solid var(--border);
+  }
+
+  /* ── Buttons ── */
+  .btn-dark {
+    background: var(--text);
+    color: var(--surface);
+    border: none;
+    padding: 9px 18px;
+    border-radius: var(--r-sm);
+    font-family: var(--font);
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+  }
+  .btn-ghost {
+    background: transparent;
+    color: var(--text);
+    border: 0.5px solid var(--border-strong);
+    padding: 8px 16px;
+    border-radius: var(--r-sm);
+    font-family: var(--font);
+    font-size: 12px;
+    cursor: pointer;
+  }
+  .btn-danger {
+    background: transparent;
+    color: var(--red-t);
+    border: 0.5px solid #F5BCBC;
+    padding: 5px 10px;
+    border-radius: var(--r-sm);
+    font-family: var(--font);
+    font-size: 11px;
+    cursor: pointer;
+  }
+  .btn-sm {
+    background: transparent;
+    color: var(--text);
+    border: 0.5px solid var(--border-strong);
+    padding: 5px 10px;
+    border-radius: var(--r-sm);
+    font-family: var(--font);
+    font-size: 11px;
+    cursor: pointer;
+  }
+
+  /* ── Inputs ── */
+  input[type=text], input[type=email], input[type=number], input[type=search], input, textarea, select {
+    font-family: var(--font);
+    font-size: 13px;
+    color: var(--text);
+    background: var(--surface);
+    border: 0.5px solid var(--border-strong);
+    border-radius: var(--r-sm);
+    padding: 8px 12px;
+    outline: none;
+  }
+  input::placeholder, textarea::placeholder { color: var(--text-3); }
+  select { cursor: pointer; }
+
+  /* ── Badges ── */
+  .badge {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 500;
+    padding: 3px 9px;
+    border-radius: 999px;
+  }
+  .b-green { background: var(--green); color: var(--green-t); }
+  .b-amber { background: var(--amber); color: var(--amber-t); }
+  .b-red   { background: var(--red);   color: var(--red-t); }
+  .b-blue  { background: var(--blue);  color: var(--blue-t); }
+  .b-gray  { background: var(--surface2); color: var(--text-2); border: 0.5px solid var(--border); }
+
+  /* ── Placeholder image block ── */
+  .img-block {
+    background: var(--surface2);
+    border: 0.5px solid var(--border);
+    border-radius: var(--r-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    color: var(--text-3);
+  }
+
+  /* ── Tag / size pill ── */
+  .size-tag {
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: var(--r-sm);
+    background: var(--surface2);
+    color: var(--text-2);
+    border: 0.5px solid var(--border);
+  }
+  .size-tag.selected {
+    background: var(--text);
+    color: var(--surface);
+    border-color: var(--text);
+  }
+
+  /* ── Metric card ── */
+  .metric {
+    background: var(--surface2);
+    border-radius: var(--r-md);
+    padding: 16px;
+    flex: 1;
+  }
+  .metric-label { font-size: 11px; color: var(--text-2); margin-bottom: 6px; }
+  .metric-val   { font-size: 22px; font-weight: 600; color: var(--text); }
+  .metric-sub   { font-size: 11px; color: var(--text-3); margin-top: 3px; }
+
+  /* ── Table ── */
+  .t-head {
+    display: grid;
+    padding: 8px 20px;
+    background: var(--surface2);
+    border-bottom: 0.5px solid var(--border);
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--text-2);
+    letter-spacing: .04em;
+  }
+  .t-row {
+    display: grid;
+    padding: 11px 20px;
+    border-bottom: 0.5px solid var(--border);
+    font-size: 13px;
+    color: var(--text);
+    align-items: center;
+  }
+  .t-row:last-child { border-bottom: none; }
+
+  /* ── Sidebar ── */
+  .sidebar {
+    width: 176px;
+    flex-shrink: 0;
+    background: var(--surface2);
+    border-right: 0.5px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    min-height: 400px;
+  }
+  .sidebar-logo-wrap {
+    padding: 18px 18px 16px;
+    border-bottom: 0.5px solid var(--border);
+    margin-bottom: 8px;
+  }
+  .sidebar-logo {
+    font-family: var(--mono);
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: .06em;
+    color: var(--text);
+  }
+  .sidebar-role { font-size: 10px; color: var(--text-3); margin-top: 2px; }
+  .s-item {
+    padding: 9px 18px;
+    font-size: 13px;
+    color: var(--text-2);
+    border-left: 2px solid transparent;
+    cursor: pointer;
+  }
+  .s-item.active {
+    color: var(--text);
+    font-weight: 500;
+    border-left-color: var(--text);
+    background: var(--surface);
+  }
+
+  /* ── Topbar ── */
+  .topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 13px 20px;
+    border-bottom: 0.5px solid var(--border);
+  }
+  .topbar-title { font-size: 15px; font-weight: 600; color: var(--text); }
+
+  /* ── Order stepper ── */
+  .stepper { display: flex; align-items: flex-start; position: relative; margin-bottom: 24px; }
+  .step { display: flex; flex-direction: column; align-items: center; flex: 1; position: relative; z-index: 2; }
+  .step-dot {
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    border: 2px solid var(--border-strong);
+    background: var(--surface);
+  }
+  .step-dot.done { background: var(--text); border-color: var(--text); }
+  .step-label { font-size: 10px; color: var(--text-3); margin-top: 6px; text-align: center; }
+  .step-label.done { color: var(--text); font-weight: 500; }
+  .stepper-line {
+    position: absolute;
+    top: 11px; left: 11px; right: 11px;
+    height: 1.5px;
+    background: var(--border);
+    z-index: 1;
+  }
+  .stepper-fill {
+    position: absolute;
+    top: 11px; left: 11px;
+    height: 1.5px;
+    background: var(--text);
+    z-index: 1;
+    width: 33%;
+  }
+
+  /* ── Avatar initials ── */
+  .avatar {
+    width: 30px; height: 30px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px; font-weight: 600;
+  }
+
+  /* ── Color swatch ── */
+  .swatch {
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    cursor: pointer;
+  }
+  .swatch.active { border-color: var(--text); }
+
+  /* ── Qty control ── */
+  .qty {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    border: 0.5px solid var(--border-strong);
+    border-radius: var(--r-sm);
+    padding: 5px 12px;
+    font-size: 13px;
+    color: var(--text);
+  }
+
+  /* ── Checkout step pills ── */
+  .steps-pill { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--text-3); }
+  .steps-pill .active-step { color: var(--text); font-weight: 500; }
+
+  /* ── Section label inside screens ── */
+  .sec { font-size: 11px; font-weight: 500; letter-spacing: .06em; color: var(--text-3); margin-bottom: 10px; text-transform: uppercase; }
+
+  /* ── Product card ── */
+  .prod-card { display: flex; flex-direction: column; }
+
+  /* ── Radio ── */
+  .radio-row {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 11px 14px;
+    border-radius: var(--r-md);
+    border: 0.5px solid var(--border);
+    font-size: 13px;
+    cursor: pointer;
+    margin-bottom: 8px;
+  }
+  .radio-row.selected { border-color: var(--text); border-width: 1px; }
+
+  /* ── Summary box ── */
+  .summary-box {
+    background: var(--surface2);
+    border-radius: var(--r-lg);
+    padding: 18px;
+  }
+  .summary-title { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 14px; }
+  .summary-row { display: flex; justify-content: space-between; font-size: 12px; color: var(--text-2); margin-bottom: 7px; }
+  .summary-total { display: flex; justify-content: space-between; font-size: 14px; font-weight: 600; color: var(--text); padding-top: 12px; border-top: 0.5px solid var(--border); margin-top: 6px; }
+
+  /* ── Upload zone ── */
+  .upload-zone {
+    border: 1px dashed var(--border-strong);
+    border-radius: var(--r-md);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 8px;
+    height: 130px;
+    font-size: 12px; color: var(--text-3);
+    cursor: pointer;
+    background: var(--surface2);
+  }
+  .upload-plus {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    border: 1px solid var(--border-strong);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; color: var(--text-3);
+  }
+
+  /* ── Search bar ── */
+  .search-bar {
+    flex: 1;
+    background: var(--surface2);
+    border: 0.5px solid var(--border);
+    border-radius: var(--r-sm);
+    padding: 7px 14px;
+    font-size: 13px;
+    color: var(--text-3);
+  }
+</style>
+</head>
+<body>
+
+<p class="page-title">Wireframe · Medium Fidelity</p>
+<p class="page-subtitle">ABIBAS — Shoe Store</p>
+<p class="page-desc">Customer-facing screens &amp; Admin panel &mdash; ready for Figma import via HTML plugin</p>
+
+
+<!-- ═══════════════════════════════════════════
+     CUSTOMER SCREENS
+════════════════════════════════════════════ -->
+
+<div class="section-divider">
+  <div class="section-divider-line"></div>
+  <span class="section-divider-label">Customer screens</span>
+  <div class="section-divider-line"></div>
+</div>
+
+
+<!-- 1. HOMEPAGE -->
+<div class="screen-wrap">
+  <p class="screen-label">Screen 1 — Homepage</p>
+  <div class="frame">
+    <div class="nav">
+      <span class="nav-logo">ABIBAS</span>
+      <div class="nav-links">
+        <span class="nav-link">Men</span>
+        <span class="nav-link">Women</span>
+        <span class="nav-link">Sale</span>
+      </div>
+      <div class="nav-icons">
+        <div class="nav-icon"></div>
+        <div class="nav-icon"></div>
+      </div>
+    </div>
+
+    <div style="padding:20px 24px">
+      <div class="img-block" style="height:220px;margin-bottom:20px;font-size:13px">Hero banner — featured collection</div>
+
+      <p class="sec">Shop by category</p>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:24px">
+        <div class="img-block" style="height:90px;flex-direction:column;gap:8px">
+          <div style="width:36px;height:36px;border-radius:50%;background:var(--border)"></div>
+          <span>Running</span>
+        </div>
+        <div class="img-block" style="height:90px;flex-direction:column;gap:8px">
+          <div style="width:36px;height:36px;border-radius:50%;background:var(--border)"></div>
+          <span>Casual</span>
+        </div>
+        <div class="img-block" style="height:90px;flex-direction:column;gap:8px">
+          <div style="width:36px;height:36px;border-radius:50%;background:var(--border)"></div>
+          <span>Formal</span>
+        </div>
+      </div>
+
+      <p class="sec">Featured products</p>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px">
+        <div class="prod-card">
+          <div class="img-block" style="height:120px;margin-bottom:10px">img</div>
+          <p style="font-size:13px;font-weight:500">Air Flex Pro</p>
+          <p style="font-size:12px;color:var(--text-2);margin-top:2px">Running</p>
+          <p style="font-size:13px;font-weight:600;margin-top:4px">&#8369;3,499</p>
+        </div>
+        <div class="prod-card">
+          <div class="img-block" style="height:120px;margin-bottom:10px">img</div>
+          <p style="font-size:13px;font-weight:500">Urban Runner</p>
+          <p style="font-size:12px;color:var(--text-2);margin-top:2px">Running</p>
+          <p style="font-size:13px;font-weight:600;margin-top:4px">&#8369;2,899</p>
+        </div>
+        <div class="prod-card">
+          <div style="position:relative">
+            <div class="img-block" style="height:120px;margin-bottom:10px">img</div>
+            <span class="badge b-blue" style="position:absolute;top:8px;left:8px">Sale</span>
+          </div>
+          <p style="font-size:13px;font-weight:500">Classic Low</p>
+          <p style="font-size:12px;color:var(--text-2);margin-top:2px">Casual</p>
+          <p style="font-size:13px;font-weight:600;margin-top:4px">&#8369;1,999</p>
+        </div>
+        <div class="prod-card">
+          <div class="img-block" style="height:120px;margin-bottom:10px">img</div>
+          <p style="font-size:13px;font-weight:500">Speedburst X</p>
+          <p style="font-size:12px;color:var(--text-2);margin-top:2px">Running</p>
+          <p style="font-size:13px;font-weight:600;margin-top:4px">&#8369;4,199</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- 2. BROWSE / SEARCH -->
+<div class="screen-wrap">
+  <p class="screen-label">Screen 2 — Browse &amp; search</p>
+  <div class="frame">
+    <div class="nav">
+      <span class="nav-logo">ABIBAS</span>
+      <input class="search-bar" type="text" placeholder="Search shoes...">
+      <div class="nav-icons" style="margin-left:16px">
+        <div class="nav-icon"></div>
+        <div class="nav-icon"></div>
+      </div>
+    </div>
+
+    <div style="display:flex;gap:0">
+      <div style="width:180px;flex-shrink:0;padding:20px;border-right:0.5px solid var(--border)">
+        <p class="sec">Filters</p>
+        <p style="font-size:12px;font-weight:500;margin-bottom:8px">Category</p>
+        <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:18px">
+          <label style="font-size:12px;color:var(--text-2);display:flex;gap:6px;align-items:center"><input type="checkbox" checked> Running</label>
+          <label style="font-size:12px;color:var(--text-2);display:flex;gap:6px;align-items:center"><input type="checkbox"> Casual</label>
+          <label style="font-size:12px;color:var(--text-2);display:flex;gap:6px;align-items:center"><input type="checkbox"> Formal</label>
+        </div>
+        <p style="font-size:12px;font-weight:500;margin-bottom:8px">Price range</p>
+        <input type="range" style="width:100%;margin-bottom:4px">
+        <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--text-3);margin-bottom:18px"><span>&#8369;500</span><span>&#8369;10k</span></div>
+        <p style="font-size:12px;font-weight:500;margin-bottom:8px">Size</p>
+        <div style="display:flex;flex-wrap:wrap;gap:5px">
+          <span class="size-tag">7</span>
+          <span class="size-tag selected">8</span>
+          <span class="size-tag">9</span>
+          <span class="size-tag">10</span>
+          <span class="size-tag">11</span>
+        </div>
+      </div>
+
+      <div style="flex:1;padding:20px">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
+          <p style="font-size:13px;color:var(--text-2)">24 products found</p>
+          <select><option>Sort: Featured</option><option>Price: Low to High</option><option>Price: High to Low</option></select>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px">
+          <div class="prod-card">
+            <div class="img-block" style="height:130px;margin-bottom:10px">img</div>
+            <p style="font-size:13px;font-weight:500">Air Flex Pro</p>
+            <p style="font-size:11px;color:var(--text-3);margin-top:2px">Running &middot; Sizes 7&ndash;12</p>
+            <p style="font-size:13px;font-weight:600;margin-top:5px">&#8369;3,499</p>
+          </div>
+          <div class="prod-card">
+            <div class="img-block" style="height:130px;margin-bottom:10px">img</div>
+            <p style="font-size:13px;font-weight:500">Speedburst X</p>
+            <p style="font-size:11px;color:var(--text-3);margin-top:2px">Running &middot; Sizes 6&ndash;11</p>
+            <p style="font-size:13px;font-weight:600;margin-top:5px">&#8369;4,199</p>
+          </div>
+          <div class="prod-card">
+            <div style="position:relative">
+              <div class="img-block" style="height:130px;margin-bottom:10px">img</div>
+              <span class="badge b-blue" style="position:absolute;top:8px;left:8px">Sale</span>
+            </div>
+            <p style="font-size:13px;font-weight:500">Lite Pace</p>
+            <p style="font-size:11px;color:var(--text-3);margin-top:2px">Running &middot; Sizes 6&ndash;12</p>
+            <p style="font-size:13px;font-weight:600;margin-top:5px">&#8369;2,499</p>
+          </div>
+          <div class="prod-card">
+            <div class="img-block" style="height:130px;margin-bottom:10px">img</div>
+            <p style="font-size:13px;font-weight:500">TrailMax 3</p>
+            <p style="font-size:11px;color:var(--text-3);margin-top:2px">Running &middot; Sizes 7&ndash;13</p>
+            <p style="font-size:13px;font-weight:600;margin-top:5px">&#8369;3,799</p>
+          </div>
+          <div class="prod-card">
+            <div class="img-block" style="height:130px;margin-bottom:10px">img</div>
+            <p style="font-size:13px;font-weight:500">Stride Elite</p>
+            <p style="font-size:11px;color:var(--text-3);margin-top:2px">Running &middot; Sizes 7&ndash;12</p>
+            <p style="font-size:13px;font-weight:600;margin-top:5px">&#8369;5,299</p>
+          </div>
+          <div class="prod-card">
+            <div class="img-block" style="height:130px;margin-bottom:10px">img</div>
+            <p style="font-size:13px;font-weight:500">Echo Run</p>
+            <p style="font-size:11px;color:var(--text-3);margin-top:2px">Running &middot; Sizes 6&ndash;11</p>
+            <p style="font-size:13px;font-weight:600;margin-top:5px">&#8369;2,999</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- 3. PRODUCT DETAIL -->
+<div class="screen-wrap">
+  <p class="screen-label">Screen 3 — Product detail</p>
+  <div class="frame">
+    <div class="nav">
+      <span class="nav-logo">ABIBAS</span>
+      <div class="nav-links">
+        <span class="nav-link">Men</span>
+        <span class="nav-link">Women</span>
+        <span class="nav-link">Sale</span>
+      </div>
+      <div class="nav-icons">
+        <div class="nav-icon"></div>
+        <div class="nav-icon"></div>
+      </div>
+    </div>
+
+    <div style="display:flex;gap:32px;padding:24px">
+      <div style="width:52%">
+        <div class="img-block" style="height:280px;margin-bottom:10px;font-size:13px">Main product image</div>
+        <div style="display:flex;gap:8px">
+          <div class="img-block" style="width:70px;height:70px;font-size:10px">img</div>
+          <div class="img-block" style="width:70px;height:70px;font-size:10px">img</div>
+          <div class="img-block" style="width:70px;height:70px;font-size:10px">img</div>
+        </div>
+      </div>
+
+      <div style="flex:1">
+        <p style="font-size:11px;color:var(--text-3);margin-bottom:5px">Running</p>
+        <p style="font-size:22px;font-weight:600;color:var(--text);margin-bottom:5px">Air Flex Pro</p>
+        <p style="font-size:20px;font-weight:600;margin-bottom:18px">&#8369;3,499</p>
+
+        <p style="font-size:12px;font-weight:500;margin-bottom:8px">Color</p>
+        <div style="display:flex;gap:8px;margin-bottom:18px">
+          <div class="swatch active" style="background:#1A1917"></div>
+          <div class="swatch" style="background:#B5D4F4"></div>
+          <div class="swatch" style="background:#F5C4B3"></div>
+          <div class="swatch" style="background:#C0DD97"></div>
+        </div>
+
+        <p style="font-size:12px;font-weight:500;margin-bottom:8px">Size</p>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:20px">
+          <span class="size-tag">6</span>
+          <span class="size-tag">7</span>
+          <span class="size-tag selected">8</span>
+          <span class="size-tag">9</span>
+          <span class="size-tag">10</span>
+          <span class="size-tag">11</span>
+          <span class="size-tag">12</span>
+        </div>
+
+        <button class="btn-dark" style="width:100%;margin-bottom:10px;padding:12px">Add to cart</button>
+        <button class="btn-ghost" style="width:100%;padding:11px">Buy now</button>
+
+        <div style="margin-top:18px;padding-top:18px;border-top:0.5px solid var(--border)">
+          <p style="font-size:12px;color:var(--text-2);line-height:1.7">Lightweight mesh upper with responsive foam sole. Ideal for daily training runs. Free shipping on orders over &#8369;2,000.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- 4. CART -->
+<div class="screen-wrap">
+  <p class="screen-label">Screen 4 — Cart</p>
+  <div class="frame">
+    <div class="nav">
+      <span class="nav-logo">ABIBAS</span>
+      <div style="flex:1"></div>
+      <span style="font-size:13px;color:var(--text-2)">Cart (2 items)</span>
+    </div>
+
+    <div style="display:flex;gap:24px;padding:24px">
+      <div style="flex:1;display:flex;flex-direction:column;gap:12px">
+        <div style="border:0.5px solid var(--border);border-radius:var(--r-lg);padding:16px;display:flex;gap:14px;align-items:flex-start">
+          <div class="img-block" style="width:80px;height:80px;flex-shrink:0;font-size:10px">img</div>
+          <div style="flex:1">
+            <p style="font-size:14px;font-weight:500">Air Flex Pro</p>
+            <p style="font-size:12px;color:var(--text-2);margin-top:3px">Size 8 &middot; Black</p>
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-top:14px">
+              <div class="qty"><span>&#8722;</span><span>1</span><span>+</span></div>
+              <p style="font-size:14px;font-weight:600">&#8369;3,499</p>
+            </div>
+          </div>
+        </div>
+        <div style="border:0.5px solid var(--border);border-radius:var(--r-lg);padding:16px;display:flex;gap:14px;align-items:flex-start">
+          <div class="img-block" style="width:80px;height:80px;flex-shrink:0;font-size:10px">img</div>
+          <div style="flex:1">
+            <p style="font-size:14px;font-weight:500">Classic Low</p>
+            <p style="font-size:12px;color:var(--text-2);margin-top:3px">Size 9 &middot; White</p>
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-top:14px">
+              <div class="qty"><span>&#8722;</span><span>1</span><span>+</span></div>
+              <p style="font-size:14px;font-weight:600">&#8369;1,999</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="width:220px;flex-shrink:0">
+        <div class="summary-box">
+          <p class="summary-title">Order summary</p>
+          <div class="summary-row"><span>Subtotal</span><span>&#8369;5,498</span></div>
+          <div class="summary-row"><span>Shipping</span><span>Free</span></div>
+          <div class="summary-total"><span>Total</span><span>&#8369;5,498</span></div>
+          <button class="btn-dark" style="width:100%;margin-top:16px;padding:12px">Checkout</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- 5. CHECKOUT -->
+<div class="screen-wrap">
+  <p class="screen-label">Screen 5 — Checkout</p>
+  <div class="frame">
+    <div class="nav">
+      <span class="nav-logo">ABIBAS</span>
+      <div style="flex:1"></div>
+      <div class="steps-pill">
+        <span class="active-step">Shipping</span>
+        <span>›</span><span>Payment</span>
+        <span>›</span><span>Confirm</span>
+      </div>
+    </div>
+
+    <div style="display:flex;gap:24px;padding:24px">
+      <div style="flex:1">
+        <p style="font-size:14px;font-weight:600;margin-bottom:16px">Shipping details</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px">
+          <div>
+            <p style="font-size:11px;color:var(--text-2);margin-bottom:5px">First name</p>
+            <input type="text" style="width:100%" placeholder="Christen">
+          </div>
+          <div>
+            <p style="font-size:11px;color:var(--text-2);margin-bottom:5px">Last name</p>
+            <input type="text" style="width:100%" placeholder="Escollar">
+          </div>
+        </div>
+        <div style="margin-bottom:12px">
+          <p style="font-size:11px;color:var(--text-2);margin-bottom:5px">Street address</p>
+          <input type="text" style="width:100%" placeholder="123 Poblacion St">
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px">
+          <div>
+            <p style="font-size:11px;color:var(--text-2);margin-bottom:5px">City</p>
+            <input type="text" style="width:100%" placeholder="Davao City">
+          </div>
+          <div>
+            <p style="font-size:11px;color:var(--text-2);margin-bottom:5px">ZIP code</p>
+            <input type="text" style="width:100%" placeholder="8000">
+          </div>
+        </div>
+        <div style="margin-bottom:20px">
+          <p style="font-size:11px;color:var(--text-2);margin-bottom:5px">Phone number</p>
+          <input type="text" style="width:100%" placeholder="+63 9xx xxx xxxx">
+        </div>
+
+        <p style="font-size:14px;font-weight:600;margin-bottom:12px">Shipping method</p>
+        <div class="radio-row selected">
+          <span style="display:flex;align-items:center;gap:8px"><input type="radio" name="ship" checked> Standard (3&ndash;5 days)</span>
+          <span style="font-weight:600">Free</span>
+        </div>
+        <div class="radio-row">
+          <span style="display:flex;align-items:center;gap:8px"><input type="radio" name="ship"> Express (1&ndash;2 days)</span>
+          <span style="font-weight:600">&#8369;150</span>
+        </div>
+
+        <button class="btn-dark" style="width:100%;margin-top:20px;padding:12px">Continue to payment &rarr;</button>
+      </div>
+
+      <div style="width:220px;flex-shrink:0">
+        <div class="summary-box">
+          <p class="summary-title">Your order</p>
+          <div style="display:flex;gap:10px;align-items:center;margin-bottom:10px">
+            <div class="img-block" style="width:44px;height:44px;font-size:10px;flex-shrink:0">img</div>
+            <div><p style="font-size:12px;font-weight:500">Air Flex Pro</p><p style="font-size:11px;color:var(--text-2)">Size 8 &middot; &#8369;3,499</p></div>
+          </div>
+          <div style="display:flex;gap:10px;align-items:center;margin-bottom:14px">
+            <div class="img-block" style="width:44px;height:44px;font-size:10px;flex-shrink:0">img</div>
+            <div><p style="font-size:12px;font-weight:500">Classic Low</p><p style="font-size:11px;color:var(--text-2)">Size 9 &middot; &#8369;1,999</p></div>
+          </div>
+          <div class="summary-total"><span>Total</span><span>&#8369;5,498</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- 6. ORDER TRACKING -->
+<div class="screen-wrap">
+  <p class="screen-label">Screen 6 — Order tracking</p>
+  <div class="frame">
+    <div class="nav">
+      <span class="nav-logo">ABIBAS</span>
+      <div style="flex:1"></div>
+      <span style="font-size:13px;color:var(--text-2)">My account</span>
+    </div>
+
+    <div style="padding:24px">
+      <p style="font-size:17px;font-weight:600;margin-bottom:4px">Order #STR-20483</p>
+      <p style="font-size:12px;color:var(--text-2);margin-bottom:22px">Placed March 30, 2026 &middot; 2 items &middot; &#8369;5,498</p>
+
+      <div class="stepper">
+        <div class="stepper-line"></div>
+        <div class="stepper-fill"></div>
+        <div class="step"><div class="step-dot done"></div><p class="step-label done">Confirmed</p></div>
+        <div class="step"><div class="step-dot done"></div><p class="step-label done">Packed</p></div>
+        <div class="step"><div class="step-dot"></div><p class="step-label">Shipped</p></div>
+        <div class="step"><div class="step-dot"></div><p class="step-label">Delivered</p></div>
+      </div>
+
+      <div style="border:0.5px solid var(--border);border-radius:var(--r-lg);padding:16px;margin-bottom:14px">
+        <p style="font-size:13px;font-weight:500;margin-bottom:12px">Items in this order</p>
+        <div style="display:flex;gap:12px;align-items:center;margin-bottom:10px">
+          <div class="img-block" style="width:60px;height:60px;flex-shrink:0;font-size:10px">img</div>
+          <div><p style="font-size:13px;font-weight:500">Air Flex Pro</p><p style="font-size:12px;color:var(--text-2);margin-top:2px">Size 8 &middot; Black &middot; &#8369;3,499</p></div>
+        </div>
+        <div style="display:flex;gap:12px;align-items:center">
+          <div class="img-block" style="width:60px;height:60px;flex-shrink:0;font-size:10px">img</div>
+          <div><p style="font-size:13px;font-weight:500">Classic Low</p><p style="font-size:12px;color:var(--text-2);margin-top:2px">Size 9 &middot; White &middot; &#8369;1,999</p></div>
+        </div>
+      </div>
+
+      <div class="summary-box">
+        <p style="font-size:12px;font-weight:500;margin-bottom:6px">Shipping to</p>
+        <p style="font-size:12px;color:var(--text-2);line-height:1.7">Christen Escollar<br>123 Poblacion St, Davao City, 8000<br>Est. delivery: Apr 2&ndash;4, 2026</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     ADMIN SCREENS
+════════════════════════════════════════════ -->
+
+<div class="section-divider">
+  <div class="section-divider-line"></div>
+  <span class="section-divider-label">Admin screens</span>
+  <div class="section-divider-line"></div>
+</div>
+
+
+<!-- ADMIN 1. DASHBOARD -->
+<div class="screen-wrap">
+  <p class="screen-label">Admin 1 — Dashboard</p>
+  <div class="frame">
+    <div style="display:flex">
+      <div class="sidebar">
+        <div class="sidebar-logo-wrap">
+          <div class="sidebar-logo">ABIBAS</div>
+          <div class="sidebar-role">Admin panel</div>
+        </div>
+        <div class="s-item active">Dashboard</div>
+        <div class="s-item">Products</div>
+        <div class="s-item">Orders</div>
+        <div class="s-item">Users</div>
+      </div>
+      <div style="flex:1">
+        <div class="topbar">
+          <p class="topbar-title">Dashboard</p>
+          <div style="display:flex;align-items:center;gap:10px">
+            <span style="font-size:12px;color:var(--text-2)">Admin</span>
+            <div class="avatar" style="background:var(--surface2);border:0.5px solid var(--border);color:var(--text-2)">A</div>
+          </div>
+        </div>
+        <div style="padding:20px">
+          <div style="display:flex;gap:12px;margin-bottom:20px">
+            <div class="metric"><p class="metric-label">Total revenue</p><p class="metric-val">&#8369;184,320</p><p class="metric-sub">+12% this month</p></div>
+            <div class="metric"><p class="metric-label">Orders today</p><p class="metric-val">38</p><p class="metric-sub">6 pending</p></div>
+            <div class="metric"><p class="metric-label">Products</p><p class="metric-val">124</p><p class="metric-sub">4 low stock</p></div>
+            <div class="metric"><p class="metric-label">Customers</p><p class="metric-val">1,042</p><p class="metric-sub">+8 this week</p></div>
+          </div>
+          <div style="display:flex;gap:16px">
+            <div style="flex:1">
+              <p class="sec" style="margin-bottom:10px">Revenue this week</p>
+              <div class="img-block" style="height:140px;font-size:13px">Bar chart — daily revenue</div>
+            </div>
+            <div style="width:210px;flex-shrink:0">
+              <p class="sec" style="margin-bottom:10px">Recent orders</p>
+              <div style="display:flex;flex-direction:column;gap:9px">
+                <div style="display:flex;justify-content:space-between;align-items:center">
+                  <span style="font-size:12px;color:var(--text-2);font-family:var(--mono)">#STR-20483</span>
+                  <span class="badge b-amber">Processing</span>
+                </div>
+                <div style="display:flex;justify-content:space-between;align-items:center">
+                  <span style="font-size:12px;color:var(--text-2);font-family:var(--mono)">#STR-20482</span>
+                  <span class="badge b-green">Shipped</span>
+                </div>
+                <div style="display:flex;justify-content:space-between;align-items:center">
+                  <span style="font-size:12px;color:var(--text-2);font-family:var(--mono)">#STR-20481</span>
+                  <span class="badge b-green">Delivered</span>
+                </div>
+                <div style="display:flex;justify-content:space-between;align-items:center">
+                  <span style="font-size:12px;color:var(--text-2);font-family:var(--mono)">#STR-20480</span>
+                  <span class="badge b-green">Delivered</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ADMIN 2. MANAGE PRODUCTS -->
+<div class="screen-wrap">
+  <p class="screen-label">Admin 2 — Manage products</p>
+  <div class="frame">
+    <div style="display:flex">
+      <div class="sidebar">
+        <div class="sidebar-logo-wrap">
+          <div class="sidebar-logo">ABIBAS</div>
+          <div class="sidebar-role">Admin panel</div>
+        </div>
+        <div class="s-item">Dashboard</div>
+        <div class="s-item active">Products</div>
+        <div class="s-item">Orders</div>
+        <div class="s-item">Users</div>
+      </div>
+      <div style="flex:1">
+        <div class="topbar">
+          <p class="topbar-title">Products</p>
+          <button class="btn-dark">+ Add product</button>
+        </div>
+        <div style="padding:16px">
+          <div style="display:flex;gap:8px;margin-bottom:14px">
+            <input type="text" style="flex:1" placeholder="Search products...">
+            <select><option>All categories</option><option>Running</option><option>Casual</option><option>Formal</option></select>
+            <select><option>All stock</option><option>In stock</option><option>Low stock</option><option>Out of stock</option></select>
+          </div>
+          <div class="t-head" style="grid-template-columns:2.5fr 1fr 1fr 1.2fr 90px">
+            <span>Product</span><span>Category</span><span>Price</span><span>Stock</span><span>Actions</span>
+          </div>
+          <div class="t-row" style="grid-template-columns:2.5fr 1fr 1fr 1.2fr 90px">
+            <div style="display:flex;gap:10px;align-items:center">
+              <div class="img-block" style="width:40px;height:40px;font-size:10px;flex-shrink:0">img</div>
+              <span style="font-weight:500">Air Flex Pro</span>
+            </div>
+            <span style="color:var(--text-2)">Running</span>
+            <span>&#8369;3,499</span>
+            <span class="badge b-green">In stock (42)</span>
+            <div style="display:flex;gap:5px"><button class="btn-sm">Edit</button><button class="btn-danger">Del</button></div>
+          </div>
+          <div class="t-row" style="grid-template-columns:2.5fr 1fr 1fr 1.2fr 90px">
+            <div style="display:flex;gap:10px;align-items:center">
+              <div class="img-block" style="width:40px;height:40px;font-size:10px;flex-shrink:0">img</div>
+              <span style="font-weight:500">Urban Runner</span>
+            </div>
+            <span style="color:var(--text-2)">Running</span>
+            <span>&#8369;2,899</span>
+            <span class="badge b-amber">Low stock (4)</span>
+            <div style="display:flex;gap:5px"><button class="btn-sm">Edit</button><button class="btn-danger">Del</button></div>
+          </div>
+          <div class="t-row" style="grid-template-columns:2.5fr 1fr 1fr 1.2fr 90px">
+            <div style="display:flex;gap:10px;align-items:center">
+              <div class="img-block" style="width:40px;height:40px;font-size:10px;flex-shrink:0">img</div>
+              <span style="font-weight:500">Classic Low</span>
+            </div>
+            <span style="color:var(--text-2)">Casual</span>
+            <span>&#8369;1,999</span>
+            <span class="badge b-green">In stock (88)</span>
+            <div style="display:flex;gap:5px"><button class="btn-sm">Edit</button><button class="btn-danger">Del</button></div>
+          </div>
+          <div class="t-row" style="grid-template-columns:2.5fr 1fr 1fr 1.2fr 90px">
+            <div style="display:flex;gap:10px;align-items:center">
+              <div class="img-block" style="width:40px;height:40px;font-size:10px;flex-shrink:0">img</div>
+              <span style="font-weight:500">Speedburst X</span>
+            </div>
+            <span style="color:var(--text-2)">Running</span>
+            <span>&#8369;4,199</span>
+            <span class="badge b-red">Out of stock</span>
+            <div style="display:flex;gap:5px"><button class="btn-sm">Edit</button><button class="btn-danger">Del</button></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ADMIN 3. ADD / EDIT PRODUCT -->
+<div class="screen-wrap">
+  <p class="screen-label">Admin 3 — Add / edit product</p>
+  <div class="frame">
+    <div style="display:flex">
+      <div class="sidebar">
+        <div class="sidebar-logo-wrap">
+          <div class="sidebar-logo">ABIBAS</div>
+          <div class="sidebar-role">Admin panel</div>
+        </div>
+        <div class="s-item">Dashboard</div>
+        <div class="s-item active">Products</div>
+        <div class="s-item">Orders</div>
+        <div class="s-item">Users</div>
+      </div>
+      <div style="flex:1">
+        <div class="topbar">
+          <p class="topbar-title">Add product</p>
+          <div style="display:flex;gap:8px">
+            <button class="btn-ghost">Cancel</button>
+            <button class="btn-dark">Save product</button>
+          </div>
+        </div>
+        <div style="padding:20px;display:flex;gap:20px">
+          <div style="flex:1;display:flex;flex-direction:column;gap:14px">
+            <div>
+              <p style="font-size:11px;color:var(--text-2);margin-bottom:5px">Product name</p>
+              <input type="text" style="width:100%" placeholder="e.g. Air Flex Pro">
+            </div>
+            <div>
+              <p style="font-size:11px;color:var(--text-2);margin-bottom:5px">Description</p>
+              <textarea style="width:100%;height:76px;padding:8px 12px;border:0.5px solid var(--border-strong);border-radius:var(--r-sm);font-family:var(--font);font-size:13px;resize:none;background:var(--surface);color:var(--text)" placeholder="Describe the product..."></textarea>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+              <div>
+                <p style="font-size:11px;color:var(--text-2);margin-bottom:5px">Price (&#8369;)</p>
+                <input type="number" style="width:100%" placeholder="0.00">
+              </div>
+              <div>
+                <p style="font-size:11px;color:var(--text-2);margin-bottom:5px">Stock quantity</p>
+                <input type="number" style="width:100%" placeholder="0">
+              </div>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+              <div>
+                <p style="font-size:11px;color:var(--text-2);margin-bottom:5px">Category</p>
+                <select style="width:100%"><option>Running</option><option>Casual</option><option>Formal</option></select>
+              </div>
+              <div>
+                <p style="font-size:11px;color:var(--text-2);margin-bottom:5px">Available sizes</p>
+                <div style="display:flex;flex-wrap:wrap;gap:5px;padding-top:4px">
+                  <span class="size-tag">6</span>
+                  <span class="size-tag selected">7</span>
+                  <span class="size-tag selected">8</span>
+                  <span class="size-tag">9</span>
+                  <span class="size-tag">10</span>
+                  <span class="size-tag">11</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div style="width:190px;flex-shrink:0">
+            <p style="font-size:11px;color:var(--text-2);margin-bottom:8px">Product images</p>
+            <div class="upload-zone" style="margin-bottom:10px">
+              <div class="upload-plus">+</div>
+              <span>Upload image</span>
+            </div>
+            <div style="display:flex;gap:7px">
+              <div class="img-block" style="width:54px;height:54px;font-size:10px">img</div>
+              <div class="img-block" style="width:54px;height:54px;font-size:10px">img</div>
+              <div class="upload-zone" style="width:54px;height:54px;border-radius:var(--r-md);font-size:18px;color:var(--text-3)">+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ADMIN 4. MANAGE ORDERS -->
+<div class="screen-wrap">
+  <p class="screen-label">Admin 4 — Manage orders</p>
+  <div class="frame">
+    <div style="display:flex">
+      <div class="sidebar">
+        <div class="sidebar-logo-wrap">
+          <div class="sidebar-logo">ABIBAS</div>
+          <div class="sidebar-role">Admin panel</div>
+        </div>
+        <div class="s-item">Dashboard</div>
+        <div class="s-item">Products</div>
+        <div class="s-item active">Orders</div>
+        <div class="s-item">Users</div>
+      </div>
+      <div style="flex:1">
+        <div class="topbar">
+          <p class="topbar-title">Orders</p>
+          <div style="display:flex;gap:6px">
+            <span class="badge b-gray" style="cursor:pointer">All</span>
+            <span class="badge b-amber" style="cursor:pointer">Processing</span>
+            <span class="badge b-green" style="cursor:pointer">Shipped</span>
+            <span class="badge b-gray" style="cursor:pointer">Delivered</span>
+          </div>
+        </div>
+        <div style="padding:16px">
+          <div class="t-head" style="grid-template-columns:1fr 1.5fr 0.8fr 1fr 1.2fr 90px">
+            <span>Order ID</span><span>Customer</span><span>Items</span><span>Total</span><span>Status</span><span>Action</span>
+          </div>
+          <div class="t-row" style="grid-template-columns:1fr 1.5fr 0.8fr 1fr 1.2fr 90px">
+            <span style="font-family:var(--mono);font-size:12px;color:var(--text-2)">#STR-20483</span>
+            <span>Christen E.</span>
+            <span style="color:var(--text-2)">2 items</span>
+            <span>&#8369;5,498</span>
+            <span class="badge b-amber">Processing</span>
+            <button class="btn-sm">Update</button>
+          </div>
+          <div class="t-row" style="grid-template-columns:1fr 1.5fr 0.8fr 1fr 1.2fr 90px">
+            <span style="font-family:var(--mono);font-size:12px;color:var(--text-2)">#STR-20482</span>
+            <span>Maria S.</span>
+            <span style="color:var(--text-2)">1 item</span>
+            <span>&#8369;3,499</span>
+            <span class="badge b-green">Shipped</span>
+            <button class="btn-sm">Update</button>
+          </div>
+          <div class="t-row" style="grid-template-columns:1fr 1.5fr 0.8fr 1fr 1.2fr 90px">
+            <span style="font-family:var(--mono);font-size:12px;color:var(--text-2)">#STR-20481</span>
+            <span>Jose R.</span>
+            <span style="color:var(--text-2)">3 items</span>
+            <span>&#8369;9,297</span>
+            <span class="badge b-green">Delivered</span>
+            <button class="btn-sm">View</button>
+          </div>
+          <div class="t-row" style="grid-template-columns:1fr 1.5fr 0.8fr 1fr 1.2fr 90px">
+            <span style="font-family:var(--mono);font-size:12px;color:var(--text-2)">#STR-20480</span>
+            <span>Ana L.</span>
+            <span style="color:var(--text-2)">1 item</span>
+            <span>&#8369;4,199</span>
+            <span class="badge b-green">Delivered</span>
+            <button class="btn-sm">View</button>
+          </div>
+          <div class="t-row" style="grid-template-columns:1fr 1.5fr 0.8fr 1fr 1.2fr 90px">
+            <span style="font-family:var(--mono);font-size:12px;color:var(--text-2)">#STR-20479</span>
+            <span>Renz M.</span>
+            <span style="color:var(--text-2)">2 items</span>
+            <span>&#8369;6,398</span>
+            <span class="badge b-amber">Processing</span>
+            <button class="btn-sm">Update</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ADMIN 5. MANAGE USERS -->
+<div class="screen-wrap">
+  <p class="screen-label">Admin 5 — Manage users</p>
+  <div class="frame">
+    <div style="display:flex">
+      <div class="sidebar">
+        <div class="sidebar-logo-wrap">
+          <div class="sidebar-logo">ABIBAS</div>
+          <div class="sidebar-role">Admin panel</div>
+        </div>
+        <div class="s-item">Dashboard</div>
+        <div class="s-item">Products</div>
+        <div class="s-item">Orders</div>
+        <div class="s-item active">Users</div>
+      </div>
+      <div style="flex:1">
+        <div class="topbar">
+          <p class="topbar-title">Users</p>
+          <input type="search" style="width:200px" placeholder="Search users...">
+        </div>
+        <div style="padding:16px">
+          <div class="t-head" style="grid-template-columns:2fr 2fr 0.8fr 1fr 100px">
+            <span>Name</span><span>Email</span><span>Orders</span><span>Status</span><span>Action</span>
+          </div>
+          <div class="t-row" style="grid-template-columns:2fr 2fr 0.8fr 1fr 100px">
+            <div style="display:flex;gap:9px;align-items:center">
+              <div class="avatar" style="background:var(--blue);color:var(--blue-t)">CE</div>
+              <span style="font-weight:500">Christen Escollar</span>
+            </div>
+            <span style="color:var(--text-2)">c.escollar@email.com</span>
+            <span>4</span>
+            <span class="badge b-green">Active</span>
+            <button class="btn-danger">Deactivate</button>
+          </div>
+          <div class="t-row" style="grid-template-columns:2fr 2fr 0.8fr 1fr 100px">
+            <div style="display:flex;gap:9px;align-items:center">
+              <div class="avatar" style="background:var(--green);color:var(--green-t)">MS</div>
+              <span style="font-weight:500">Maria Santos</span>
+            </div>
+            <span style="color:var(--text-2)">m.santos@email.com</span>
+            <span>7</span>
+            <span class="badge b-green">Active</span>
+            <button class="btn-danger">Deactivate</button>
+          </div>
+          <div class="t-row" style="grid-template-columns:2fr 2fr 0.8fr 1fr 100px">
+            <div style="display:flex;gap:9px;align-items:center">
+              <div class="avatar" style="background:var(--amber);color:var(--amber-t)">JR</div>
+              <span style="font-weight:500">Jose Reyes</span>
+            </div>
+            <span style="color:var(--text-2)">j.reyes@email.com</span>
+            <span>2</span>
+            <span class="badge b-green">Active</span>
+            <button class="btn-danger">Deactivate</button>
+          </div>
+          <div class="t-row" style="grid-template-columns:2fr 2fr 0.8fr 1fr 100px">
+            <div style="display:flex;gap:9px;align-items:center">
+              <div class="avatar" style="background:var(--surface2);color:var(--text-2)">AL</div>
+              <span style="font-weight:500">Ana Lim</span>
+            </div>
+            <span style="color:var(--text-2)">a.lim@email.com</span>
+            <span>1</span>
+            <span class="badge b-red">Inactive</span>
+            <button class="btn-sm">Activate</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
